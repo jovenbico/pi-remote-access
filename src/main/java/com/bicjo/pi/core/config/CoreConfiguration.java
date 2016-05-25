@@ -4,7 +4,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = { "com.bicjo.pi.dao", "com.bicjo.pi.service" })
+@ComponentScan(basePackages = { "com.bicjo.pi.service" })
 public class CoreConfiguration {
 
 }

@@ -13,7 +13,6 @@ public class NotificationServiceImpl implements NotificationService {
 	@Override
 	public void sendNotification() {
 		// TODO Auto-generated method stub
-
 	}
 
 }
