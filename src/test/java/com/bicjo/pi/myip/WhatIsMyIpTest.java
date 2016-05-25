@@ -12,7 +12,8 @@ public class WhatIsMyIpTest extends BaseTest {
 
 	@Test
 	public void getPublicIP_test() {
-		String publicIP = whatIsMyIp.getPublicIP();
-		LOG.debug(publicIP);
+		LOG.debug(whatIsMyIp.getPublicIP());
+		// LOG.debug(whatIsMyIp.getPublicIP());
+		// LOG.debug(whatIsMyIp.getPublicIP());
 	}
 }
