@@ -12,7 +12,7 @@ public class SlackTest extends BaseTest {
 
 	@Test
 	public void sendMessage_ok() {
-		slack.sendMessage("hello world");
+		slack.sendMessage("pi-slack-bot");
 	}
 
 }
