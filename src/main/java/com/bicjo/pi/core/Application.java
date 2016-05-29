@@ -7,9 +7,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.bicjo.pi.core.config.CoreConfiguration;
 import com.bicjo.pi.core.config.IntegrationConfiguration;
+import com.bicjo.pi.core.config.SchedulerConfiguration;
 
 @EnableScheduling
-@SpringBootApplication(scanBasePackageClasses = { CoreConfiguration.class, IntegrationConfiguration.class })
+@SpringBootApplication(scanBasePackageClasses = { CoreConfiguration.class, IntegrationConfiguration.class,
+		SchedulerConfiguration.class })
 public class Application {
 
 	private final Logger LOG = Logger.getLogger(Application.class);
