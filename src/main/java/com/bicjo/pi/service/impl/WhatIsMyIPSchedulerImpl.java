@@ -1,5 +1,7 @@
 package com.bicjo.pi.service.impl;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -18,6 +20,11 @@ public class WhatIsMyIPSchedulerImpl implements WhatIsMyIPScheduler {
 	@Override
 	public void checkIp() {
 		LOG.info(whatIsMyIPService != null);
+		whatIsMyIPService.checkIP();
+	}
+
+	@PostConstruct
+	public void onStartUp() {
 		whatIsMyIPService.checkIP();
 	}
 
