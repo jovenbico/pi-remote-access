@@ -29,8 +29,11 @@ dependencies {
 	
 	testCompile 'junit:junit:4.12'
 	testCompile 'org.springframework:spring-test:4.2.6.RELEASE'
-	
-	
+}
+
+jar {
+    baseName = 'pi-remote-access'
+    version =  '0.0.1-SNAPSHOT'
 }
 
 springBoot {
@@ -39,4 +42,10 @@ springBoot {
 
 test {
     testLogging.showStandardStreams = true
+    scanForTestClasses = false
+    include '**/*Suite.class'
+    
+	beforeTest { descriptor ->
+		logger.lifecycle("Running test: " + descriptor)
+	}
 }
