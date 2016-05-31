@@ -4,6 +4,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.bicjo.pi.myip.WhatIsMyIp;
 import com.bicjo.pi.service.WhatIsMyIPService;
@@ -22,14 +23,27 @@ public class WhatIsMyIPServiceImpl implements WhatIsMyIPService {
 
 	@Override
 	public void checkIP() {
-		String ip = currentIP.get();
-
 		String publicIP = whatIsMyIp.getPublicIP();
 
-		if (!publicIP.equals(ip)) {
+		if (isPublicIPChange(publicIP)) {
 			currentIP.set(publicIP);
-			slack.sendMessage("new public IP: " + publicIP);
+			sendSlackNotification(publicIP);
 		}
+	}
+
+	private boolean isPublicIPChange(String publicIP) {
+		boolean hasChanged = false;
+		String ip = currentIP.get();
+
+		if (!StringUtils.isEmpty(publicIP)) {
+			hasChanged = !publicIP.equals(ip);
+		}
+
+		return hasChanged;
+	}
+
+	private void sendSlackNotification(String publicIP) {
+		slack.sendMessage("The public IP: " + publicIP);
 	}
 
 }
